@@ -1,0 +1,8 @@
+(defun (generate-TeX-title-name-string name)
+    (concat "\\" name "{%s}")
+    )
+(defun (generate-class name) ((generate-TeX-title-name-string name) . (generate-TeX-title-name-string (concat name "*"))))
+(defun (generate-article-like-classes)
+    (map generate-class '("section" "subsection" "subsubsection")))
+(defun (generate-article-class name-document-class)
+    (list name-document-class (concat "\\documentclass{" name-document-class "}") (generate-article-like-classes)))
